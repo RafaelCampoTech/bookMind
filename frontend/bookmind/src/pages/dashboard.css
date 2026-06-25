@@ -1,0 +1,46 @@
+.dashboard {
+  min-height: 100%;
+  background: #fff8f0;
+  color: #3d2e1e;
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.dashboard__header {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.dashboard__title {
+  margin: 0;
+  font-size: 20px;
+  font-weight: 600;
+  color: #3d2e1e;
+}
+
+.dashboard__subtitle {
+  margin: 0;
+  font-size: 14px;
+  color: #7a6b5a;
+}
+
+.statcard-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 16px;
+}
+
+@media (max-width: 1024px) {
+  .statcard-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 640px) {
+  .statcard-grid {
+    grid-template-columns: 1fr;
+  }
+}

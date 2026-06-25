@@ -1,0 +1,179 @@
+.semantic-search {
+  min-height: 100%;
+  background: #fff8f0;
+  color: #3d2e1e;
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+}
+
+.semantic-search__top {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.semantic-search__header {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.semantic-search__title {
+  margin: 0;
+  font-size: 20px;
+  font-weight: 600;
+  color: #3d2e1e;
+}
+
+.semantic-search__subtitle {
+  margin: 0;
+  font-size: 14px;
+  color: #7a6b5a;
+}
+
+.semantic-search__bar {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.semantic-search__input-wrap {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 0 16px;
+  height: 44px;
+  background: #fff;
+  border: 1px solid #e8dfd3;
+  border-radius: 999px;
+}
+
+.semantic-search__input-icon {
+  flex-shrink: 0;
+  color: #a89888;
+}
+
+.semantic-search__input {
+  flex: 1;
+  min-width: 0;
+  border: none;
+  outline: none;
+  background: transparent;
+  font-size: 14px;
+  color: #3d2e1e;
+}
+
+.semantic-search__input::placeholder {
+  color: #a89888;
+}
+
+.semantic-search__submit {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  height: 44px;
+  padding: 0 18px;
+  border: none;
+  border-radius: 10px;
+  background: #818cf8;
+  color: #fff;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: background 0.2s ease;
+}
+
+.semantic-search__submit:hover {
+  background: #6366f1;
+}
+
+.semantic-search__filter {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  flex-shrink: 0;
+  border: 1px solid #e8dfd3;
+  border-radius: 10px;
+  background: #fff;
+  color: #7a6b5a;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+.semantic-search__filter:hover {
+  background: #faf6f0;
+}
+
+.semantic-search__empty {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 48px 24px;
+  gap: 8px;
+}
+
+.semantic-search__empty-icon {
+  color: #d4c9bc;
+  margin-bottom: 8px;
+}
+
+.semantic-search__empty-title {
+  margin: 0;
+  font-size: 16px;
+  font-weight: 600;
+  color: #3d2e1e;
+}
+
+.semantic-search__empty-text {
+  margin: 0;
+  font-size: 14px;
+  color: #7a6b5a;
+  max-width: 360px;
+}
+
+.semantic-search__suggestions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 8px;
+  margin-top: 20px;
+}
+
+.semantic-search__suggestion {
+  padding: 8px 14px;
+  border: 1px solid #e8dfd3;
+  border-radius: 999px;
+  background: #fff;
+  font-size: 13px;
+  color: #5c4f42;
+  cursor: pointer;
+  transition: background 0.2s ease, border-color 0.2s ease;
+}
+
+.semantic-search__suggestion:hover {
+  background: #faf6f0;
+  border-color: #d4c9bc;
+}
+
+@media (max-width: 768px) {
+  .semantic-search__bar {
+    flex-wrap: wrap;
+  }
+
+  .semantic-search__input-wrap {
+    width: 100%;
+  }
+
+  .semantic-search__submit {
+    flex: 1;
+    justify-content: center;
+  }
+}

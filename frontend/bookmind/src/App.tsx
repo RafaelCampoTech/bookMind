@@ -1,23 +1,21 @@
-import './App.css'
-import { Book, Search, Database, Users } from 'lucide-react';
-import StatCard from './components/StatCard'
+import "./index.css";
+import BookExplorer from "./pages/book-explorer";
+import Dashboard from "./pages/dashboard";
+import SemanticSearch from "./pages/semantic-search";
+import AppLayout from "./layouts/AppLayout";
+import { Route, Routes } from "react-router";
+import { BrowserRouter } from "react-router";
 
-function App() {
-
-
+export default function App() {
   return (
-    <>
-      <div className="App">
-        <StatCard
-          label="Total Books"
-          value="1234"
-          sub="Indexed"
-          trend="+12%"
-          icon={<Users />}
-        />
-      </div>
-    </>
-  )
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<AppLayout />}>
+          <Route index element={<Dashboard />} />
+          <Route path="books" element={<BookExplorer />} />
+          <Route path="search" element={<SemanticSearch />} />
+        </Route>
+      </Routes>
+    </BrowserRouter>
+  );
 }
-
-export default App
