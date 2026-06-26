@@ -5,7 +5,6 @@
    [muuntaja.core :as m]
    [muuntaja.middleware :as muuntaja]
    [reitit.openapi :as openapi]
-   [reitit.swagger-ui :as swagger-ui]
    [reitit.ring.coercion :as coercion]
    [reitit.coercion.schema]
    [schema.core :as s]))
@@ -33,23 +32,12 @@
                        {:status 200
                         :body body})}}]])
 
- 
-
-
-
-(def app
-  (ring/ring-handler
-   (ring/router
-    routes
-    {:data {:muuntaja m/instance
-            :middleware [params/wrap-params
-                         muuntaja/wrap-format
-                         coercion/coerce-exceptions-middleware
-                         coercion/coerce-request-middleware
-                         coercion/coerce-response-middleware]}})
-   
-   (swagger-ui/create-swagger-ui-handler
-    {:path "/docs"
-     :url "/openapi.json"})
-   
-   #_(ring/create-default-handler)))
+(def router
+  (ring/router
+   routes
+   {:data {:muuntaja m/instance
+           :middleware [params/wrap-params
+                        muuntaja/wrap-format
+                        coercion/coerce-exceptions-middleware
+                        coercion/coerce-request-middleware
+                        coercion/coerce-response-middleware]}}))

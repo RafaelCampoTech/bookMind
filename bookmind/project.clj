@@ -11,7 +11,10 @@
                  [metosin/reitit "0.10.1"]
                  [fi.metosin/reitit-openapi "0.10.1"]
                  [metosin/reitit-swagger-ui "0.10.1"]
-                 [metosin/jsonista "0.3.13"]]
+                 [metosin/jsonista "0.3.13"]
+                 [mount "0.1.24"]
+                 [nrepl "1.7.0"]
+                 [com.taoensso/timbre "6.8.0"]]
   :main ^:skip-aot bookmind.core
   :target-path "target/%s"
   :profiles {:dev {}

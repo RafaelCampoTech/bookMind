@@ -2,7 +2,7 @@
   (:gen-class)
   (:require
    [org.httpkit.server :as http]
-   [bookmind.routes :refer [app]])) 
+   [bookmind.handler :refer [handler]])) 
 
 (defonce server (atom nil))
 
@@ -13,7 +13,5 @@
 
 (defn -main [& _]
   (reset! server
-          (http/run-server #'app {:port 8080}))
+          (http/run-server #'handler {:port 8080}))
   (println "Listening on http://localhost:8080/docs"))
-
-
