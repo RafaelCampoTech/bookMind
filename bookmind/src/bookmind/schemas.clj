@@ -1,4 +1,4 @@
-(ns bookmind.utils.schemas
+(ns bookmind.schemas
   (:require
    [reitit.coercion.schema]
    [schema.core :as s]))
