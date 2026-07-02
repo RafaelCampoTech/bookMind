@@ -1,7 +1,17 @@
 (ns bookmind.services.internet-archive.router
   (:require
+   [schema.core :as s]
    [bookmind.services.internet-archive.handler :as handler]))
 
+(s/defschema ArchiveQuery
+  {:title s/Str
+   (s/optional-key :limit) s/Int
+   (s/optional-key :offset) s/Int})
+
+(s/defschema ArchiveResponse
+  {:num-found s/Int
+   :start s/Int
+   :docs [s/Any]})
 
 (defn routes []
   ["/archive"
@@ -10,19 +20,9 @@
           :tags ["Internet Archive"]
 
           :parameters
-          {:query
-           {:title string?
-            :limit {:optional true
-                    :default 20
-                    :schema int?}
-            :offset {:optional true
-                     :default 0
-                     :schema int?}}}
+          {:query ArchiveQuery}
 
           :responses
-          {200 {:body
-                {:num-found int?
-                 :start int?
-                 :docs vector?}}}
+          {200 {:body ArchiveResponse}}
 
           :handler handler/get-book-handler}}])

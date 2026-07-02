@@ -4,10 +4,9 @@
 
 
 (defn get-book-handler
-  [{{body :body} :parameters}]
+  [{{{:keys [title]} :query} :parameters}]
   (try
-    (let [title (:title body)
-          response (model/search-book-by-title title)]
+    (let [response (model/search-book-by-title title)]
       (if (= (:status response) 200)
         (resp/ok (:response response))
         (resp/internal-server-error {:error "Failed to fetch book data from Internet Archive"})))

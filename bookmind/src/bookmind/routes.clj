@@ -7,7 +7,7 @@
    [reitit.openapi :as openapi]
    [bookmind.middleware :refer [middleware-chain]]
    [reitit.ring.coercion :as coercion]
-   [reitit.coercion.schema]
+   [reitit.coercion.schema :as schema-coercion]
    [schema.core :as s]
    [bookmind.services.internet-archive.router :as int-arc]))
 
@@ -41,7 +41,8 @@
 (defn router []
   (ring/router
    (routes)
-   {:data {:muuntaja m/instance
+   {:data {:coercion schema-coercion/coercion
+           :muuntaja m/instance
            :middleware [params/wrap-params
                         middleware-chain
                         muuntaja/wrap-format
