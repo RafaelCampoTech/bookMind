@@ -30,9 +30,3 @@
 
           :else  {:status status
                   :response response})))
-
-
-(defn get-book
-  [{{body :body} :parameters}]
-  {:status 200
-   :body body})

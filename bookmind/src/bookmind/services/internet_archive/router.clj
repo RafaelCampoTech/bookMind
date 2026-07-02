@@ -1,13 +1,28 @@
 (ns bookmind.services.internet-archive.router
-  (:require [bookmind.services.internet-archive.model :as model]
-            [bookmind.schemas :refer [User]]))
+  (:require
+   [bookmind.services.internet-archive.handler :as handler]))
 
 
 (defn routes []
   ["/archive"
-   {:get {:summary "Get a file from internet archive"
-          :description "Creates a user"
+   {:get {:summary "Search books in the Internet Archive"
+          :description "Search books by title with pagination."
           :tags ["Internet Archive"]
-          :parameters {:body User}
-          :responses {200 {:body User}}
-          :handler model/get-book}}])
+
+          :parameters
+          {:query
+           {:title string?
+            :limit {:optional true
+                    :default 20
+                    :schema int?}
+            :offset {:optional true
+                     :default 0
+                     :schema int?}}}
+
+          :responses
+          {200 {:body
+                {:num-found int?
+                 :start int?
+                 :docs vector?}}}
+
+          :handler handler/get-book-handler}}])

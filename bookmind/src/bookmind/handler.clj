@@ -11,5 +11,4 @@
        (router)
        (swagger-ui/create-swagger-ui-handler
         {:path "/docs"
-         :url "/openapi.json"}))
-      #_middleware-chain))
+         :url "/openapi.json"}))))

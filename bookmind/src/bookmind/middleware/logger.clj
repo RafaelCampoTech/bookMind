@@ -11,8 +11,10 @@
       (prn data)
       (force (:?msg_ data)))}))
 
+(defonce atomic-log (atom nil))
 
 (defn -request->context [req]
+   (reset! atomic-log req)
   {:request-id  (or (get-in req [:headers "x-request-id"])
                     (str (UUID/randomUUID)))
    :method      (name (:request-method req))
