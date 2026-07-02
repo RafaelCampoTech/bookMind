@@ -5,6 +5,7 @@
    [muuntaja.core :as m]
    [muuntaja.middleware :as muuntaja]
    [reitit.openapi :as openapi]
+   [bookmind.middleware :refer [middleware-chain]]
    [reitit.ring.coercion :as coercion]
    [reitit.coercion.schema]
    [schema.core :as s]
@@ -42,6 +43,7 @@
    (routes)
    {:data {:muuntaja m/instance
            :middleware [params/wrap-params
+                        middleware-chain
                         muuntaja/wrap-format
                         coercion/coerce-exceptions-middleware
                         coercion/coerce-request-middleware

@@ -1,7 +1,6 @@
 (ns bookmind.handler
   (:require
-   [bookmind.routes :refer [router]]
-   [bookmind.middleware :refer [middleware-chain]]
+   [bookmind.routes :refer [router]] 
    [reitit.ring :as ring]
    [reitit.swagger-ui :as swagger-ui]
    [reitit.coercion.schema]))
@@ -13,4 +12,4 @@
        (swagger-ui/create-swagger-ui-handler
         {:path "/docs"
          :url "/openapi.json"}))
-      middleware-chain))
+      #_middleware-chain))

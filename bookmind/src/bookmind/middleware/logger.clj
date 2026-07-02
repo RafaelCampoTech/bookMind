@@ -4,16 +4,12 @@
    [java.util UUID]))
 
 
-(defonce -merge-config
+#_(defonce -merge-config
   (t/merge-config!
    {:output-fn
-    (fn [{:keys [level ?msg_ context]}]
-      (str
-       (name level)
-       " "
-       context
-       " "
-       (force ?msg_)))}))
+    (fn [data]
+      (prn data)
+      (force (:?msg_ data)))}))
 
 
 (defn -request->context [req]
@@ -30,4 +26,3 @@
   (fn [req]
     (t/with-context (-request->context req)
       (handler req))))
-
