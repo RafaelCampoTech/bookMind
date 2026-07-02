@@ -6,6 +6,7 @@
   :dependencies [[org.clojure/clojure "1.12.0"]
                  [http-kit "2.3.0"]
                  [metosin/muuntaja "0.6.11"]
+                 [camel-snake-kebab "0.4.3"]
                  [environ "1.2.0"]
                  [cheshire "6.2.0"]  
                  [metosin/reitit "0.10.1"]
