@@ -7,15 +7,21 @@
 
 (defonce server (atom nil))
 
+(defonce server-settings
+  {:port  8080})
+
+
+(defn -kill-port! [port]
+  (let [cmd (format "lsof -ti tcp:%s | xargs kill -9" port)]
+    (.waitFor (.exec (Runtime/getRuntime) cmd))))
+
+
 (defn stop-server []
   (t/info "Stoping the server")
   (when-let [stop-fn @server]
     (stop-fn :timeout 100)
+    (-kill-port! (:port server-settings))
     (reset! server nil)))
-
-
-(defonce server-settings
-  {:port  8080})
 
 
 (defn start-server
@@ -33,4 +39,4 @@
 (defn -main [& _]
   (t/info "Main Thread")
   (start-server)
-  (println "Listening on http://localhost:8080/docs"))
+  (println (str "Listening on http://localhost:" (:port server-settings) "/docs")))
