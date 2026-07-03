@@ -22,7 +22,6 @@
         utils/parse-body-params)))
 
  
-
 (defn search-book-by-title
   "Searches for books in the Internet Archive by title and returns a map containing the status and response body."
   [title]
