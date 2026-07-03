@@ -8,7 +8,7 @@
    (s/optional-key :limit) s/Int
    (s/optional-key :offset) s/Int})
 
-(s/defschema ArchiveResponse
+(s/defschema ArchiveResponse 
   {:num-found s/Int
    :start s/Int
    :docs [s/Any]})
@@ -23,6 +23,6 @@
           {:query ArchiveQuery}
 
           :responses
-          {200 {:body ArchiveResponse}}
+          {200 {:body s/Any}}
 
           :handler handler/get-book-handler}}])

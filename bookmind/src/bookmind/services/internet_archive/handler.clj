@@ -3,11 +3,8 @@
             [ring.util.http-response :as resp]))
 
 
-(defonce dbg (atom nil))
-
 (defn get-book-handler
   [req]
-  (reset! dbg req)
   (try
     (let [params (-> req
                     :parameters
@@ -20,4 +17,3 @@
     (catch Exception e
       (resp/internal-server-error {:error (.getMessage e)
                                    :msg "An error occurred while processing the request"}))))
- 

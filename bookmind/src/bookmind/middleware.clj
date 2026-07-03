@@ -1,5 +1,7 @@
 (ns bookmind.middleware
-  (:require [bookmind.middleware.logger :refer [wrap-logging-context*]]))
+  (:require [bookmind.middleware.logger :refer [wrap-logging-context*]]
+            [bookmind.middleware.case :refer [wrap-kebab-case-request*
+                                              wrap-camel-case-response*]]))
 
 
 
@@ -13,4 +15,6 @@
    [handler] 
    (-> handler
        (wrap-logging-context*)
-       (wrap-content-type "application/json")))
+       (wrap-content-type "application/json")
+       (wrap-kebab-case-request*) 
+       (wrap-camel-case-response*)))
