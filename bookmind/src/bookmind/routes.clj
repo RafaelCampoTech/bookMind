@@ -8,17 +8,8 @@
    [bookmind.middleware :refer [middleware-chain]]
    [reitit.ring.coercion :as coercion]
    [reitit.coercion.schema :as schema-coercion]
-   [schema.core :as s]
    [bookmind.services.internet-archive.router :as int-arc]))
 
-(s/defschema Address
-  {:street s/Str
-   :city (s/enum :tre :hki)})
-
-(s/defschema User
-  {:id s/Str
-   :name s/Str
-   :address Address})
 
 (defn routes 
   "Global routes of the project."
@@ -28,13 +19,11 @@
            :handler (openapi/create-openapi-handler)}}]
 
    ["/api"
-    {:post {:summary "Create user"
-            :description "Creates a user"
-            :parameters {:body User}
-            :responses {200 {:body User}}
-            :handler (fn [{{body :body} :parameters}]
+    {:post {:summary "ping"
+            :description "Pings the server"
+            :handler (fn [_]
                        {:status 200
-                        :body body})}}]
+                        :body {:message "pong"}})}}]
    (int-arc/routes)])
 
 
