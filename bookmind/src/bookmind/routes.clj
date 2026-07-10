@@ -5,9 +5,11 @@
    [muuntaja.core :as m]
    [muuntaja.middleware :as muuntaja]
    [reitit.openapi :as openapi]
+   [schema.core :as s]
    [bookmind.middleware :refer [middleware-chain]]
    [reitit.ring.coercion :as coercion]
    [reitit.coercion.schema :as schema-coercion]
+   [ring.util.http-response :refer [ok]]
    [bookmind.services.internet-archive.router :as int-arc]))
 
 
@@ -21,9 +23,9 @@
    ["/api"
     {:post {:summary "ping"
             :description "Pings the server"
+            :responses {200 {:body s/Any}}
             :handler (fn [_]
-                       {:status 200
-                        :body {:message "pong"}})}}]
+                       (ok {:message "pong"}))}}]
    (int-arc/routes)])
 
 
